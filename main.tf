@@ -10,7 +10,7 @@ resource "google_compute_network" "vpc_network" {
 }
 
 resource "google_compute_instance" "vm_instance" {
-  name         = "terra-inst"
+  name         = "terra-jenk"
   machine_type = "e2-medium"
 
   boot_disk {
@@ -26,20 +26,3 @@ resource "google_compute_instance" "vm_instance" {
   }
 }
 
-resource "google_compute_instance" "vm_creation" {
-  name         = "jenkins-inst"
-  machine_type = "e2-micro"
-  zone    = "us-central1-c"
-
-  boot_disk {
-    initialize_params {
-      image = "debian-cloud/debian-11"
-    }
-  }
-
-  network_interface {
-    network = google_compute_network.vpc_network.name
-    access_config {
-    }
-  }
-}
