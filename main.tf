@@ -1,6 +1,5 @@
 provider "google" {
-  credentials = "file("gcp-creds.json")"
-
+  credentials = "${file("account.json")}"
   project = "decoded-path-356013"
   region  = var.region
   zone    = "us-central1-c"
